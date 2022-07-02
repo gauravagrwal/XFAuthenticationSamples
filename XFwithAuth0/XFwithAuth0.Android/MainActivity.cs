@@ -1,13 +1,26 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.OS;
+using Android.Runtime;
+using Auth0.OidcClient;
 
 namespace XFwithAuth0.Droid
 {
-    [Activity(Label = "XFwithAuth0", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(
+        Label = "XFwithAuth0",
+        Icon = "@mipmap/icon",
+        Theme = "@style/MainTheme",
+        MainLauncher = true,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation |
+                               ConfigChanges.UiMode | ConfigChanges.ScreenLayout |
+                               ConfigChanges.SmallestScreenSize, LaunchMode = LaunchMode.SingleTask)]
+    [IntentFilter(
+        new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable },
+        DataScheme = "YOUR_ANDROID_PACKAGE_NAME",
+        DataHost = "DOMAIN",
+        DataPathPrefix = "/android/YOUR_ANDROID_PACKAGE_NAME/callback")]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -23,6 +36,12 @@ namespace XFwithAuth0.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        protected override void OnNewIntent(Intent intent)
+        {
+            base.OnNewIntent(intent);
+
+            ActivityMediator.Instance.Send(intent.DataString);
         }
     }
 }

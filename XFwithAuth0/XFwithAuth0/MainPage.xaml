@@ -1,24 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XFwithAuth0.MainPage">
+<ContentPage
+    x:Class="XFwithAuth0.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+        <StackLayout VerticalOptions="Start">
+            <Frame
+                Padding="24"
+                BackgroundColor="#2196F3"
+                CornerRadius="0">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="36"
+                    HorizontalTextAlignment="Center"
+                    Text="Xamarin.Forms + Auth0!"
+                    TextColor="White" />
+            </Frame>
+        </StackLayout>
+        <StackLayout Margin="20" VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal">
+                <Image x:Name="Profile" Margin="20,0" />
+                <StackLayout>
+                    <Label x:Name="Username" FontSize="Title" />
+                    <Label x:Name="Email" FontSize="Subtitle" />
+                </StackLayout>
+            </StackLayout>
+            <Label x:Name="Message" HorizontalOptions="Center" />
+        </StackLayout>
+        <StackLayout Margin="20" VerticalOptions="EndAndExpand">
+            <Button
+                x:Name="LoginButton"
+                Clicked="LoginButton_Clicked"
+                IsVisible="True"
+                Text="Login with Auth0" />
+            <Button
+                x:Name="LogoutButton"
+                Clicked="LogoutButton_Clicked"
+                IsVisible="False"
+                Text="Logout" />
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
