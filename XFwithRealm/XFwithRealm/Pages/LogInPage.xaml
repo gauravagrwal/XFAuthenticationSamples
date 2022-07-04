@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFwithRealm.Pages.LogInPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Log In">
+
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Entry
+                    x:Name="EmailEntry"
+                    ClearButtonVisibility="WhileEditing"
+                    HeightRequest="50"
+                    Keyboard="Email"
+                    Placeholder="Email"
+                    ReturnType="Next"
+                    TabIndex="1" />
+                <Entry
+                    x:Name="PasswordEntry"
+                    ClearButtonVisibility="WhileEditing"
+                    HeightRequest="50"
+                    IsPassword="True"
+                    Placeholder="Password"
+                    ReturnType="Done"
+                    TabIndex="2" />
+            </StackLayout>
+            <StackLayout VerticalOptions="End">
+                <Button
+                    x:Name="LogInButton"
+                    Margin="0,10"
+                    Clicked="LogInButton_Clicked"
+                    CornerRadius="5"
+                    Text="Log In" />
+                <Label Padding="10" HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontSize="Body" Text="Don't have an account? " />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Body"
+                                Text="Register"
+                                TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RegisterButton_Clicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

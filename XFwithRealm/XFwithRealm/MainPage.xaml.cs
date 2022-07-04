@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using XFwithRealm.Pages;
 
 namespace XFwithRealm
 {
@@ -13,6 +9,23 @@ namespace XFwithRealm
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private async void LogOutItem_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (App.RealmApp.CurrentUser != null)
+                {
+                    await App.RealmApp.CurrentUser.LogOutAsync();
+                    Navigation.InsertPageBefore(new LogInPage(), this);
+                    await Navigation.PopAsync(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Ok!");
+            }
         }
     }
 }

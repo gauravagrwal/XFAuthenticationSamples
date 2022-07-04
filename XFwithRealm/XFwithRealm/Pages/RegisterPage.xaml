@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFwithRealm.Pages.RegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Register">
+
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Entry
+                    x:Name="EmailEntry"
+                    ClearButtonVisibility="WhileEditing"
+                    HeightRequest="50"
+                    Keyboard="Email"
+                    Placeholder="Email"
+                    ReturnType="Next"
+                    TabIndex="1" />
+                <Entry
+                    x:Name="PasswordEntry"
+                    ClearButtonVisibility="WhileEditing"
+                    HeightRequest="50"
+                    IsPassword="True"
+                    Placeholder="Password"
+                    ReturnType="Next"
+                    TabIndex="2" />
+                <Entry
+                    x:Name="ConfirmPasswordEntry"
+                    ClearButtonVisibility="WhileEditing"
+                    HeightRequest="50"
+                    IsPassword="True"
+                    Placeholder="Confirm Password"
+                    ReturnType="Done"
+                    TabIndex="3" />
+            </StackLayout>
+            <StackLayout VerticalOptions="End">
+                <Button
+                    x:Name="RegisterButton"
+                    Margin="0,10"
+                    Clicked="RegisterButton_Clicked"
+                    CornerRadius="5"
+                    Text="Register" />
+                <Label Padding="10" HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontSize="Body" Text="Already have an account? " />
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="Body"
+                                Text="Log In"
+                                TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LogInButton_Clicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
